@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import Login from './pages/login.jsx'
+import Login from './pages/LoginPage/index.jsx'
 
 export default App = () => {
   return (
