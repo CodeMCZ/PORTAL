@@ -5,7 +5,7 @@ import AppRoutes from './AppRoutes'
 
 ReactDOM.render(
   <React.StrictMode>
-    <LoginPage />
+    <AppRoutes />
   </React.StrictMode>,
   document.getElementById('root')
 )
