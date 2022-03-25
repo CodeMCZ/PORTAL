@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { AuthContext } from "../../contexts/auth";
+
 import "./styles.css";
 
 const LoginPage = () => {
+  const { authenticated, login } = useContext(AuthContext);
+  
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
   
   const handleSubmit = (e) => {
     e.preventDeafult();
+    login(cnpj, password); //integração com meu contexto
   }
     return (
         <div id="login">
             <h1 className="title">Portal Escol Sistemas</h1>
+          <p>{String(authenticated)}</p>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="field">
                     <label htmlFor="text">CNPJ</label>
