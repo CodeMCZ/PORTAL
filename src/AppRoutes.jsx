@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 import {
   BrowserRouter as Routers,
@@ -10,26 +10,24 @@ import {
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 
-import { AuthContext } from "./contexts/auth";
+import { AuthProvider, AuthContext } from "./contexts/auth";
 
 const AppRoutes = () => {
-  const [user, setUser] = useState(null);
+  const Private = ({children}) => {
+    const { authenticated } = useContext(AuthContext);
 
-  const login=(cnpj, password) => {
-    setUser({id: "123", cnpj})
+    if(!authenticated){
+      return <Navigate to="/login"/>;
+    }
   };
-
-  const logout = () => {};
-  
   return (
     <Router>
-      <AuthContext.Provider value={{authenticated:
-      !!user, user, login}}>
+      <AuthProvider>
       <Routes>
         <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/" element={<Private><HomePage /></Private>} />
       </Routes>
-        </AuthContext.Provider>
+        </AuthProvider>
     </Router>
   )
 }
