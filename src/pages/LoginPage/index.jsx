@@ -13,11 +13,11 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDeafult();
     login(cnpj, password); //integração com meu contexto
-  }
+  };
     return (
         <div id="login">
             <h1 className="title">Portal Escol Sistemas</h1>
-          <p>{String(authenticated)}</p>
+            
             <form className="form" onSubmit={handleSubmit}>
                 <div className="field">
                     <label htmlFor="text">CNPJ</label>

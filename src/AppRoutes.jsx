@@ -19,16 +19,17 @@ const AppRoutes = () => {
     if(!authenticated){
       return <Navigate to="/login"/>;
     }
+    return children;
   };
   return (
-    <Router>
+    <Routers>
       <AuthProvider>
       <Routes>
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/" element={<Private><HomePage /></Private>} />
       </Routes>
         </AuthProvider>
-    </Router>
+    </Routers>
   )
 }
 
