@@ -1,47 +1,49 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import { AuthContext } from "../../contexts/auth";
+import { AuthContext } from '../../contexts/auth';
 
-import "./styles.css";
+import './styles.css';
 
 const LoginPage = () => {
-  const { authenticated, login } = useContext(AuthContext);
-  
-  const [cnpj, setCnpj] = useState("");
-  const [password, setPassword] = useState("");
-  
-  const handleSubmit = (e) => {
-    e.preventDeafult();
-    login(cnpj, password); //integração com meu contexto
-  };
-    return (
-        <div id="login">
-            <h1 className="title">Portal Escol Sistemas</h1>
-            
-            <form className="form" onSubmit={handleSubmit}>
-                <div className="field">
-                    <label htmlFor="text">CNPJ</label>
-                    <input 
-                      type="text" 
-                      id="cnpj" 
-                      value={cnpj} 
-                      onChange={(e) => setCnpj(e.target.value)}/>
-                </div>
+	const { authenticated, login } = useContext(AuthContext);
 
-                <div className="field">
-                    <label htmlFor="password">Senha</label>
-                    <input 
-                      type="password" 
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                <div className="actions">
-                    <button type="submit">Entrar</button>
-                </div>
-            </form>
-        </div>
-    );
+	const [cnpj, setCnpj] = useState('');
+	const [password, setPassword] = useState('');
+
+	const handleSubmit = e => {
+		e.preventDeafult();
+		login(cnpj, password); //integração com meu contexto
+	};
+	return (
+		<div id="login">
+			<h1 className="title">Portal</h1>
+       <img src="../Assets/escol-logo.jpeg"/>
+			<form className="form" onSubmit={handleSubmit}>
+				<div className="field">
+					<label htmlFor="text">CNPJ</label>
+					<input
+						type="text"
+						id="cnpj"
+						value={cnpj}
+						onChange={e => setCnpj(e.target.value)}
+					/>
+				</div>
+
+				<div className="field">
+					<label htmlFor="password">Senha</label>
+					<input
+						type="password"
+						id="password"
+						value={password}
+						onChange={e => setPassword(e.target.value)}
+					/>
+				</div>
+				<div className="actions">
+					<button type="submit">Entrar</button>
+				</div>
+			</form>
+		</div>
+	);
 };
 
 export default LoginPage;

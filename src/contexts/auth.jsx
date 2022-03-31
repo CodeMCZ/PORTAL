@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,8 +9,18 @@ export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
 
   const login=(cnpj, password) => {
+
+    //API -> CRIAR UMA SESSION
+
+    const loggedUser = {
+      id: 'escol',
+      cnpj
+    };
+
+    localStorage.setItem("user", JSON.stringify(loggedUser));
+    
     if(password === "locse"){
-        setUser({id: "escol", cnpj});
+        setUser(loggedUser);
       navigate("/");
     }
   };
