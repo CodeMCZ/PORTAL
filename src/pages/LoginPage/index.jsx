@@ -11,13 +11,13 @@ const LoginPage = () => {
 	const [password, setPassword] = useState('');
 
 	const handleSubmit = e => {
-		e.preventDeafult();
+		e.preventDefault();
 		login(cnpj, password); //integração com meu contexto
 	};
 	return (
 		<div id="login">
 			<h1 className="title">Portal</h1>
-       <img src='../Assets/escol_logo.png'/>
+       <img src='../src/Assets/escol_logo.png'/>
 			<form className="form" onSubmit={handleSubmit}>
 				<div className="field">
 					<label htmlFor="text">CNPJ</label>
